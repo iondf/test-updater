@@ -33,8 +33,6 @@ dmg:
 linux:
   target:
     - AppImage
-    - snap
-    - deb
   maintainer: electronjs.org
   category: Utility
 appImage:
@@ -43,5 +41,5 @@ npmRebuild: false
 publish:
   provider: github
   protocol: https
-  owner: xandemon
-  repo: in-app-electron-auto-update-example
+  owner: iondf
+  repo: test-updater
