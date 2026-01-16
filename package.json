@@ -1,7 +1,7 @@
 {
   "name": "iondf-electron-app",
   "productname": "iondf Electron App",
-  "version": "1.0.0",
+  "version": "4.0.0",
   "description": "An Electron application example that supports in-app auto updating for both private and public projects",
   "main": "./out/main/index.js",
   "author": "iondf (Sandesh Katwal)",
@@ -21,7 +21,7 @@
     "build:win": "bun run build && electron-builder --win",
     "build:mac": "electron-vite build && electron-builder --mac",
     "build:linux": "electron-vite build && electron-builder --linux",
-    "build:publish": "bun run clean:build && set GH_TOKEN=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 && bun run build && electron-builder -p always --linux --config"
+    "build:publish": "bun run clean:build && set GH_TOKEN=<gh_token> && bun run build && electron-builder -p always --linux --config"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",

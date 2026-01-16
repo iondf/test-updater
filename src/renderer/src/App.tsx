@@ -1,8 +1,13 @@
 import Versions from './components/Versions'
 import electronLogo from './assets/electron.svg'
+import { useEffect, useState } from 'react'
 
 function App(): JSX.Element {
+	const [appVersion, setAppVersion] = useState('')
 	const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+	useEffect(() => {
+		window.electron.ipcRenderer.invoke('get-app-version').then(setAppVersion)
+	}, [])
 
 	return (
 		<>
@@ -15,6 +20,7 @@ function App(): JSX.Element {
 			<p className="tip">
 				Please try pressing <code>F12</code> to open the devTool
 			</p>
+			<p className="version">Version: {appVersion}</p>
 			<div className="actions">
 				<div className="action">
 					<a href="https://electron-vite.org/" target="_blank" rel="noreferrer">

@@ -57,6 +57,10 @@ app.whenReady().then(() => {
 	// IPC test
 	ipcMain.on('ping', () => console.log('pong'))
 
+	ipcMain.handle('get-app-version', () => {
+		return app.getVersion()
+	})
+
 	createWindow()
 
 	app.on('activate', function () {
@@ -66,6 +70,10 @@ app.whenReady().then(() => {
 	})
 
 	autoUpdater.checkForUpdatesAndNotify()
+
+	autoUpdater.on('update-downloaded', () => {
+		autoUpdater.quitAndInstall(true, true)
+	})
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
